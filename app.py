@@ -22,7 +22,7 @@ st.caption("Clique nos ícones do campo para selecionar o evento (e tocar o víd
 # ==========================
 eventos = [
     ("DUEL WON", 41.71, 59.45, None),
-    ("DUEL LOST", 18.61, 41.16, "Duel Lost 1"),
+    ("DUEL LOST", 18.61, 41.16, "Duel Lost 1.mp4"),
     ("DUEL WON", 7.14, 55.46, None),
     ("AERIAL WON", 8.47, 43.82, None),
     ("FOUL", 56.84, 57.79, None),
