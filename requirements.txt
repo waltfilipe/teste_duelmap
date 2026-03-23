@@ -1,6 +1,6 @@
 streamlit 
-matplotlib 
-mplsoccer 
 pandas 
+mplsoccer 
+matplotlib 
 plotly 
 streamlit-plotly-events
