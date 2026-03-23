@@ -91,13 +91,13 @@ def apply_explicit_video_mapping(df):
       - Defina NOME do arquivo (ex: "event_12.mp4") ou None para "sem video".
     """
 
-    # Coloque aqui os NOMES dos arquivos dentro da pasta `videos/`.
+    # Coloque aqui os NOMES dos arquivos dentro da pasta `video/`.
     # Exemplo: "duel_won_0.mp4", "event_1.webm", etc.
     #
     # Dica: deixe uma string ou None para cada evento (na mesma ordem do vetor `eventos`).
     VIDEO_FILES = [
-        "Duel Lost 1.mp4",  # 0
-        "Duel Lost 2.mp4",  # 1
+        None,  # 0
+        None,  # 1
         None,  # 2
         None,  # 3
         None,  # 4
@@ -111,7 +111,7 @@ def apply_explicit_video_mapping(df):
         None,  # 12
         None,  # 13
         None,  # 14
-        "Duel Lost 3.mp4",  # 15
+        None,  # 15
         None,  # 16
         None,  # 17
         None,  # 18
@@ -128,7 +128,7 @@ def apply_explicit_video_mapping(df):
     video_dir = os.path.join(base_dir, "video")
     if not os.path.isdir(video_dir):
         st.error(
-            f"Pasta `videos/` nao encontrada em: {video_dir}. Coloque seus videos la."
+            f"Pasta `video/` nao encontrada em: {video_dir}. Coloque seus videos la."
         )
         st.stop()
 
@@ -156,21 +156,22 @@ def apply_explicit_video_mapping(df):
 
 def build_plotly_figure(df, bg_src, pitch_length, pitch_width):
     # Se os icones ficarem "espelhados" no eixo Y, mude para True.
-    Y_FLIP = False
+    Y_FLIP = True
 
     def maybe_flip_y(y):
         return (pitch_width - y) if Y_FLIP else y
 
     tipo_style = {
-        "DUEL WON": dict(symbol="circle", color=(0, 0.6, 0, 0.9), size=14, lw=1.0),
-        "DUEL LOST": dict(symbol="x", color=(1, 0, 0, 0.8), size=16, lw=3.0),
-        "AERIAL WON": dict(symbol="triangle-up", color=(0.2, 0.3, 1, 0.9), size=18, lw=1.0),
-        "AERIAL LOST": dict(symbol="triangle-down", color=(1, 0, 0, 0.8), size=18, lw=3.0),
-        "FOULED": dict(symbol="square", color=(1, 0.6, 0, 0.9), size=16, lw=1.0),
-        "FOUL": dict(symbol="cross", color=(0.6, 0.2, 0.2, 0.9), size=18, lw=3.0),
-        "INTERCEPTION": dict(symbol="diamond", color=(0.3, 0.3, 0.3, 0.9), size=14, lw=1.0),
-        "CLEARANCE": dict(symbol="hexagon", color=(0, 0.8, 0.8, 0.9), size=18, lw=1.0),
-        "BLOCK": dict(symbol="pentagon", color=(0.6, 0.1, 0.6, 0.9), size=18, lw=1.0),
+        # Tamanhos maiores que os anteriores (Plotly usa "px", entao 14-18 podia ficar pouco visivel).
+        "DUEL WON": dict(symbol="circle", color=(0, 0.6, 0, 0.9), size=22, lw=1.2),
+        "DUEL LOST": dict(symbol="x", color=(1, 0, 0, 0.8), size=26, lw=3.2),
+        "AERIAL WON": dict(symbol="triangle-up", color=(0.2, 0.3, 1, 0.9), size=28, lw=1.2),
+        "AERIAL LOST": dict(symbol="triangle-down", color=(1, 0, 0, 0.8), size=28, lw=3.2),
+        "FOULED": dict(symbol="square", color=(1, 0.6, 0, 0.9), size=24, lw=1.2),
+        "FOUL": dict(symbol="cross", color=(0.6, 0.2, 0.2, 0.9), size=28, lw=3.2),
+        "INTERCEPTION": dict(symbol="diamond", color=(0.3, 0.3, 0.3, 0.9), size=22, lw=1.2),
+        "CLEARANCE": dict(symbol="hexagon", color=(0, 0.8, 0.8, 0.9), size=28, lw=1.2),
+        "BLOCK": dict(symbol="pentagon", color=(0.6, 0.1, 0.6, 0.9), size=28, lw=1.2),
     }
 
     fig = go.Figure()
@@ -264,8 +265,6 @@ def build_plotly_figure(df, bg_src, pitch_length, pitch_width):
         range=[0, pitch_width],
         visible=False,
         fixedrange=True,
-        scaleanchor="x",
-        scaleratio=pitch_width / pitch_length,
     )
 
     return fig
