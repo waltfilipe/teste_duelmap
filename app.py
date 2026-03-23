@@ -125,7 +125,7 @@ def apply_explicit_video_mapping(df):
         st.stop()
 
     base_dir = os.path.abspath(os.path.dirname(__file__))
-    video_dir = os.path.join(base_dir, "videos")
+    video_dir = os.path.join(base_dir, "video")
     if not os.path.isdir(video_dir):
         st.error(
             f"Pasta `videos/` nao encontrada em: {video_dir}. Coloque seus videos la."
