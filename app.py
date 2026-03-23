@@ -96,8 +96,8 @@ def apply_explicit_video_mapping(df):
     #
     # Dica: deixe uma string ou None para cada evento (na mesma ordem do vetor `eventos`).
     VIDEO_FILES = [
-        Duel Lost 1.mp4,  # 0
-        Duel Lost 2.mp4,  # 1
+        "Duel Lost 1.mp4",  # 0
+        "Duel Lost 2.mp4",  # 1
         None,  # 2
         None,  # 3
         None,  # 4
@@ -111,7 +111,7 @@ def apply_explicit_video_mapping(df):
         None,  # 12
         None,  # 13
         None,  # 14
-        Duel Lost 3.mp4,  # 15
+        "Duel Lost 3.mp4",  # 15
         None,  # 16
         None,  # 17
         None,  # 18
