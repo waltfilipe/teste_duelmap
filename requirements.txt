@@ -4,3 +4,4 @@ mplsoccer
 matplotlib 
 plotly 
 streamlit-plotly-events
+streamlit-image-coordinates
